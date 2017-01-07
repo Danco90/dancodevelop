@@ -179,32 +179,29 @@ public class TestJava2 {
 	private void writeInvoicesOrderedByPayMethod(String fileOutPath, String fileOut2Path){
 		
 		System.out.println("writeInvoicesOrderedByPayMethod - start");
-		
 		try 
 		{
 			File fileIn = new File(fileOutPath);
-			BufferedReader br = new BufferedReader(new FileReader(fileIn));
+			BufferedReader buffReader = new BufferedReader(new FileReader(fileIn));
 			
 			File fileOut = new File(fileOut2Path);
-			BufferedWriter bw = new BufferedWriter(new FileWriter(fileOut));
+			BufferedWriter buffWriter = new BufferedWriter(new FileWriter(fileOut));
 			
 			StringBuilder buffer ;
 			StringBuilder buffer2 = new StringBuilder();
 			
 			Map<Integer,String> unorderedLinesListMap = new HashMap<Integer,String>();
-			Map<Integer,Long> unorderedDatesListMap = new HashMap<Integer,Long>();
+			Map<Integer,Long>   unorderedDatesListMap = new HashMap<Integer,Long>();
 			
 			String line;
 			int numLine = 0;
 			int is = 0;
 			
 			  
-			
 			//First loop for filling map
-			while ( (line = br.readLine()) != null ) 
+			while ( (line = buffReader.readLine()) != null ) 
 			{
-				System.out.println("writeInvoicesOrderedByPayMethod - read line "+numLine+" : "+line);
-				 
+				
 				   if(numLine < 1){ //copy the header in the new file, changing the 3rd column's name 
 				    
 					   buffer2.append( line).append("\n");
@@ -213,24 +210,20 @@ public class TestJava2 {
 				   {
 					   buffer = new StringBuilder();
 					   buffer.append(line);
+					   
 				   	   String ss = buffer.toString();
-				   	   System.out.println("writeInvoicesOrderedByPayMethod - buffer.tostring() : '"+ss+"' ");
-				       String [] colums = ss.split(";");//TODO
+				   	   
+				   	   String [] colums = ss.split(";");//TODO
 				       
 				       //Retrieves the i-value of field 'NrFattura' from file read .
 				       int iA = Integer.parseInt(colums[0 + (3 * is)]);
-				       //String iA = colums[0 + (3 * is)];
-				       System.out.println("readInvoices - iA "+iA);
 				       //Retrieves the i-value of field 'DataFattura' from file read .
 				       String iB = colums[1 + (3 * is)];
-				       System.out.println("readInvoices - iB "+iB);
 				       //Retrieves the i-value of field 'DataScadenza' from file read .
 				       String iC = colums[2 + (3 * is)];
-				       System.out.println("readInvoices - iC "+iC);
 				       
 				       Date paymentExpiringDate = new SimpleDateFormat("dd/MM/yyyy").parse(iC);
 				       System.out.println("readInvoices - paymentExpiringDate = "+paymentExpiringDate);
-				       
 				       
 				       long paymentExpiringDateInMillis = paymentExpiringDate.getTime();
 				       
@@ -245,12 +238,11 @@ public class TestJava2 {
 				   numLine++;
 				   
 			   }
-			   br.close();
+			   buffReader.close();
 			   
 			   
 			  //create array for date ordering asc
 			  long [] unorderedExpDates = new long [unorderedDatesListMap.size()];
-             
 			  //Filling date ordering array
 			  int i = 0;
 			  
@@ -264,15 +256,12 @@ public class TestJava2 {
               
               
               for(int y =0; y<unorderedExpDates.length;y++){
-            	
             	  //Get the Id given the expiring date in millis, following a sorted sequence
             	 
             	  //GET KEY FROM VALUEEE
             	  int id = (Integer) getKeyFromValue(unorderedDatesListMap, unorderedExpDates[y]);
-            	  System.out.println("after getKeyFromValue of unorderedexprdates[] array - id="+id);
-            	  
+            	 
             	  String theWholeline = unorderedLinesListMap.get(id);
-            	  System.out.println("The line selected in sorted sequence ="+theWholeline);
             	  
             	  buffer2.append(theWholeline).append("\n");
             	  
@@ -280,15 +269,11 @@ public class TestJava2 {
 				 
 			 
 			   
-			br.close();//TODO
-			   
-			System.out.println("writeInvoicesOrderedByPayMethod - buffer2 #323= "+buffer2.toString());
+			buffReader.close();
 			 
-			bw.write(buffer2.toString());
+			buffWriter.write(buffer2.toString());
 	        
-			bw.close();
-			
-			  
+			buffWriter.close();
 				
 			
 		} catch (IOException e) {
@@ -318,7 +303,7 @@ public class TestJava2 {
 	}
 	
 	
-	public static void bubbleSort( long [ ] dateInmillis )
+	private static void bubbleSort( long [ ] dateInmillis )
 	{
 	     int j;
 	     boolean flag = true;   // set flag to true to begin first pass
@@ -342,6 +327,13 @@ public class TestJava2 {
 	} 
 	
 	
+	/**
+	 * 
+	 * @param hm
+	 * @param value
+	 * @return
+	 * @description retry the key given a map's value
+	 */
 	public static Object getKeyFromValue(Map hm, Object value) {
 		
         for (Object o : hm.keySet()) {
@@ -353,13 +345,18 @@ public class TestJava2 {
       }
 	
 
+	
 	public static void main(String[] args) {
+		
+		String inputDirPath   = "C:/MyDevelop/dancodevelop/JobInterviews/IN";
+		String outputDirPath  = "C:/MyDevelop/dancodevelop/JobInterviews/OUT";
+		
 		
 		String fileInPath   = "C:/MyDevelop/dancodevelop/JobInterviews/input/invoices.txt";
 		String fileOutPath1 = "C:/MyDevelop/dancodevelop/JobInterviews/output/paymentExpiringInvoices.txt";
 		String fileOutPath2 = "C:/MyDevelop/dancodevelop/JobInterviews/output/invoicesOrdered.txt";
 		
-		TestJava2 test2 = new TestJava2(fileInPath,fileOutPath1);
+		TestJava2 test2 = new TestJava2(inputDirPath,outputDirPath);
 		
 		try 
 		{
