@@ -12,15 +12,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+
 
 
 /**
  * 
  * @author danielematteo
- * @version 1.0
+ * @version 1.0b
  * @updated 07/01/2017
  * 
  * 
@@ -30,16 +29,18 @@ public class TestJava2 {
 	
 	
 	private String fileInputPath;
-	private String fileOutPath;
+	private String directoryOutPath;
 	
-	public TestJava2(String fileInputPath, String fileOutPath) {
-		this.fileInputPath = fileInputPath;
-		this.fileOutPath = fileOutPath;
+	public TestJava2(String fileInPath, String dirOutPath) {
+		this.fileInputPath = fileInPath;
+		this.directoryOutPath = dirOutPath;
 	}
 
 
 	public static class Constants {
 		
+		private static final String PAYMENT_EXPIRING_INVOICES_FIRST_OUT_FILE_NAME = "paymentExpiringInvoices";
+		private static final String INVOICES_ORDERED_SECOND_OUT_FILE_NAME = "invoicesOrdered";
 		private static final String PAYMENT_METHOD_INVOICE_DATE_VALUE = "DF";
 		private static final String PAYMENT_METHOD_INVOICE_DATE_END_MONTH_VALUE = "DFFM";
 		private static final String PAYMENT_METHOD_INVOICE_DATE_60_VALUE = "DF60";
@@ -50,27 +51,28 @@ public class TestJava2 {
 	}
 	
 	
-	public void parseFile(String fileInPath, String fileOutPath,String fileOut2Path) throws FileNotFoundException{
+	public void parseFile() throws FileNotFoundException{
 		
 		System.out.println("parseFile - start");
 		//POINT a) and b)
-		readInvoices(fileInPath, fileOutPath);
+		readInvoices();
 		
 		 //POINT c) and d)
-		writeInvoicesOrderedByPayMethod(fileOutPath,fileOut2Path);
+		writeInvoicesOrderedByPayMethod();
 		
 	}
 	
 	
-	private void readInvoices(String fileInPath, String fileOutPath) throws FileNotFoundException{
+	private void readInvoices() throws FileNotFoundException{
 		
 		System.out.println("readInvoices - start");
+		String fileOutPat = getDirectoryOutPath()+"/"+Constants.PAYMENT_EXPIRING_INVOICES_FIRST_OUT_FILE_NAME;
 		try 
 		{
-			File fileIn = new File(fileInPath);
+			File fileIn = new File(getFileInputPath());
 			BufferedReader br = new BufferedReader(new FileReader(fileIn));
 			
-			File fileOut = new File(fileOutPath);
+			File fileOut = new File(fileOutPat);
 			BufferedWriter bw = new BufferedWriter(new FileWriter(fileOut));
 			
 			StringBuilder buffer ;
@@ -120,7 +122,7 @@ public class TestJava2 {
 				    	   
 				    	   Calendar cal = Calendar.getInstance();
 					       cal.setTime(myDate); // Now use a given date.
-					       Date theLastDayOfMonth = calcTheLastDateOfCurrentMonth(myDate);
+					       Date theLastDayOfMonth = Utils.calcTheLastDateOfCurrentMonth(myDate);
 					       String theLastOfMonth = new SimpleDateFormat("dd/MM/yyyy").format(theLastDayOfMonth);
 					       
 					       System.out.println("readInvoices - theLastOfMonth : '"+theLastOfMonth+"'");
@@ -164,9 +166,11 @@ public class TestJava2 {
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			System.err.println("readInvoices - ERROR IOException :"+e);
 			e.printStackTrace();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
+			System.err.println("readInvoices - ERROR ParseException"+e);
 			e.printStackTrace();
 		}
 		
@@ -176,15 +180,19 @@ public class TestJava2 {
 	}
 	
 	
-	private void writeInvoicesOrderedByPayMethod(String fileOutPath, String fileOut2Path){
+	private void writeInvoicesOrderedByPayMethod(){
 		
 		System.out.println("writeInvoicesOrderedByPayMethod - start");
+		String fileToReadPath = getDirectoryOutPath()+"/"+Constants.PAYMENT_EXPIRING_INVOICES_FIRST_OUT_FILE_NAME;
+		
+		String fileOutPath = getDirectoryOutPath()+"/"+Constants.INVOICES_ORDERED_SECOND_OUT_FILE_NAME;
+		
 		try 
 		{
-			File fileIn = new File(fileOutPath);
+			File fileIn = new File(fileToReadPath);
 			BufferedReader buffReader = new BufferedReader(new FileReader(fileIn));
 			
-			File fileOut = new File(fileOut2Path);
+			File fileOut = new File(fileOutPath);
 			BufferedWriter buffWriter = new BufferedWriter(new FileWriter(fileOut));
 			
 			StringBuilder buffer ;
@@ -252,14 +260,14 @@ public class TestJava2 {
               }
               
               //Order By Expiring Date
-              bubbleSort(unorderedExpDates);
+              Utils.bubbleSort(unorderedExpDates);
               
               
               for(int y =0; y<unorderedExpDates.length;y++){
             	  //Get the Id given the expiring date in millis, following a sorted sequence
             	 
             	  //GET KEY FROM VALUEEE
-            	  int id = (Integer) getKeyFromValue(unorderedDatesListMap, unorderedExpDates[y]);
+            	  int id = (Integer) Utils.getKeyFromValue(unorderedDatesListMap, unorderedExpDates[y]);
             	 
             	  String theWholeline = unorderedLinesListMap.get(id);
             	  
@@ -278,9 +286,11 @@ public class TestJava2 {
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			System.err.println("writeInvoicesOrderedByPayMethod - ERROR IOException :"+e);
 			e.printStackTrace();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
+			System.err.println("writeInvoicesOrderedByPayMethod - ERROR IOException :"+e);
 			e.printStackTrace();
 		}
 		
@@ -288,82 +298,31 @@ public class TestJava2 {
 	}
 	
 	
-	private Date calcTheLastDateOfCurrentMonth(Date myDate){
-		
-		System.out.println("calcTheLastDateOfCurrentMonth - start for date : '"+myDate+"'");
-		
-		Calendar myCalendar = Calendar.getInstance();
-		myCalendar.setTime(myDate);
-		myCalendar.add(Calendar.MONTH, 1);
-		myCalendar.set(Calendar.DAY_OF_MONTH, 1);
-		myCalendar.add(Calendar.DAY_OF_MONTH, -1);
-		
-		return myCalendar.getTime();
-		
-	}
 	
 	
-	private static void bubbleSort( long [ ] dateInmillis )
-	{
-	     int j;
-	     boolean flag = true;   // set flag to true to begin first pass
-	     long temp;   //holding variable
-
-	     while ( flag )
-	     {
-	            flag= false;    //set flag to false awaiting a possible swap
-	            for( j=0;  j < dateInmillis.length -1;  j++ )
-	            {
-	                   //if ( num[ j ] < num[j+1] )   // change to > for ascending sort
-	                   if ( dateInmillis[ j ] > dateInmillis[j+1] )   // change to < for ascending sort 
-	                   {
-                           temp = dateInmillis[ j ]; //swap elements
-                           dateInmillis[ j ] = dateInmillis[ j+1 ];
-                           dateInmillis[ j+1 ] = temp;
-                           flag = true;              //shows a swap occurred  
-	                  } 
-	            } 
-	      } 
-	} 
 	
 	
-	/**
-	 * 
-	 * @param hm
-	 * @param value
-	 * @return
-	 * @description retry the key given a map's value
-	 */
-	public static Object getKeyFromValue(Map hm, Object value) {
-		
-        for (Object o : hm.keySet()) {
-          if (hm.get(o).equals(value)) {
-            return o;
-          }
-        }
-        return null;
-      }
+	
+	
 	
 
 	
 	public static void main(String[] args) {
 		
-		String inputDirPath   = "C:/MyDevelop/dancodevelop/JobInterviews/IN";
-		String outputDirPath  = "C:/MyDevelop/dancodevelop/JobInterviews/OUT";
+		String inputFilePath   = "C:/MyDevelop/dancodevelop/JobInterviews/input/invoices.txt";
+		String outputDirPath  = "C:/MyDevelop/dancodevelop/JobInterviews/output";
 		
 		
-		String fileInPath   = "C:/MyDevelop/dancodevelop/JobInterviews/input/invoices.txt";
-		String fileOutPath1 = "C:/MyDevelop/dancodevelop/JobInterviews/output/paymentExpiringInvoices.txt";
-		String fileOutPath2 = "C:/MyDevelop/dancodevelop/JobInterviews/output/invoicesOrdered.txt";
-		
-		TestJava2 test2 = new TestJava2(inputDirPath,outputDirPath);
+		TestJava2 test2 = new TestJava2(inputFilePath,outputDirPath);
 		
 		try 
 		{
-			test2.parseFile(fileInPath, fileOutPath1,fileOutPath2);
+			test2.parseFile();
+			
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
+			System.err.println("writeInvoicesOrderedByPayMethod - ERROR FIleNotFoundException :"+e);
 			e.printStackTrace();
 		}
 		
@@ -382,14 +341,78 @@ public class TestJava2 {
 	}
 
 
-	public String getFileOutPath() {
-		return fileOutPath;
+	public String getDirectoryOutPath() {
+		return directoryOutPath;
 	}
 
 
-	public void setFileOutPath(String fileOutPath) {
-		this.fileOutPath = fileOutPath;
+	public void setDirectoryOutPath(String directoryOutPath) {
+		this.directoryOutPath = directoryOutPath;
 	}
+
+	
+
+	
+   public static class Utils {
+	   
+	   
+	   public static Date calcTheLastDateOfCurrentMonth(Date myDate){
+			
+			System.out.println("calcTheLastDateOfCurrentMonth - start for date : '"+myDate+"'");
+			
+			Calendar myCalendar = Calendar.getInstance();
+			myCalendar.setTime(myDate);
+			myCalendar.add(Calendar.MONTH, 1);
+			myCalendar.set(Calendar.DAY_OF_MONTH, 1);
+			myCalendar.add(Calendar.DAY_OF_MONTH, -1);
+			
+			return myCalendar.getTime();
+			
+		}
+	   
+	   /**
+		 * 
+		 * @param hm
+		 * @param value
+		 * @return
+		 * @description retry the key given a map's value
+		 */
+		public static Object getKeyFromValue(Map hm, Object value) {
+			
+	        for (Object o : hm.keySet()) {
+	          if (hm.get(o).equals(value)) {
+	            return o;
+	          }
+	        }
+	        return null;
+	      }
+		
+		
+		private static void bubbleSort( long [ ] dateInmillis )
+		{
+		     int j;
+		     boolean flag = true;   // set flag to true to begin first pass
+		     long temp;   //holding variable
+
+		     while ( flag )
+		     {
+		            flag= false;    //set flag to false awaiting a possible swap
+		            for( j=0;  j < dateInmillis.length -1;  j++ )
+		            {
+		                   //if ( num[ j ] < num[j+1] )   // change to > for ascending sort
+		                   if ( dateInmillis[ j ] > dateInmillis[j+1] )   // change to < for ascending sort 
+		                   {
+	                           temp = dateInmillis[ j ]; //swap elements
+	                           dateInmillis[ j ] = dateInmillis[ j+1 ];
+	                           dateInmillis[ j+1 ] = temp;
+	                           flag = true;              //shows a swap occurred  
+		                  } 
+		            } 
+		      } 
+		} 
+		
+   }
+	
 
 
 }
