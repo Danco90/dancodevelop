@@ -39,8 +39,8 @@ public class TestJava2 {
 
 	public static class Constants {
 		
-		private static final String PAYMENT_EXPIRING_INVOICES_FIRST_OUT_FILE_NAME = "paymentExpiringInvoices";
-		private static final String INVOICES_ORDERED_SECOND_OUT_FILE_NAME = "invoicesOrdered";
+		private static final String PAYMENT_EXPIRING_INVOICES_FIRST_OUT_FILE_NAME = "paymentExpiringInvoices.txt";
+		private static final String INVOICES_ORDERED_SECOND_OUT_FILE_NAME = "invoicesOrdered.txt";
 		private static final String PAYMENT_METHOD_INVOICE_DATE_VALUE = "DF";
 		private static final String PAYMENT_METHOD_INVOICE_DATE_END_MONTH_VALUE = "DFFM";
 		private static final String PAYMENT_METHOD_INVOICE_DATE_60_VALUE = "DF60";
