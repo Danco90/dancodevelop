@@ -4,7 +4,29 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * 
+ * @author DanieleMatteo
+ * @version 1.1
+ * @updated 13701/2017
+ *
+ */
 public class TartagliaTriangle {
+	
+	private static long calcFactorial(long n){
+		
+		if(n > 1){
+			return n*calcFactorial(n-1);
+		}else{
+			return 1;
+		}
+	}
+	
+	private static long calcTartagliaValue(long n, long k){
+		return calcFactorial(n)/(calcFactorial(k)*calcFactorial(n-k));
+	}
+	
+	
 	
 	private static long[][] calcTraingle(int dim){
 		//Defines square matrix of N*N dim
@@ -45,10 +67,32 @@ public class TartagliaTriangle {
 		BufferedReader br = new BufferedReader(is);
 		
 		System.out.println("Insert the index of raw to retrieve from tartaglia Triangle :");
-		
-		
-		
 		int rowNumber;
+		try {
+			 rowNumber = Integer.parseInt(br.readLine());
+			 long [] row = new long[rowNumber];
+			 
+			 row[0]=1;
+			 row[row.length-1]=1;
+			 
+			 for(int k=1;k<row.length-1;k++){
+				 row[k]=TartagliaTriangle.calcTartagliaValue(rowNumber-1, k);
+			 }
+			 
+			
+			 System.out.println("Your choise : N="+rowNumber+", n="+(rowNumber-1)+"\n");
+			 System.out.print("	row : [");
+			 for(int i=0; i<row.length; i++)
+			{
+			  System.out.print(" "+row[i]+"|");
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		/*int rowNumber;
 		try {
 			 rowNumber = Integer.parseInt(br.readLine());
 			 long [] row = TartagliaTriangle.retrieveTartagliaRow(rowNumber);
@@ -63,7 +107,7 @@ public class TartagliaTriangle {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
 		
 
 	}
