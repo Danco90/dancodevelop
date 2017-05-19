@@ -1,0 +1,49 @@
+package it.euris.insurance.platform.portfolio.sd_decoding.mapping.refactoring.generics;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+
+import it.euris.insurance.platform.portfolio.common.mapper.Mapper;
+import it.euris.insurance.platform.portfolio.lisa.dto.sddecoding.{Entity}Dto;
+import it.euris.insurance.platform.portfolio.utils.MapperUtil;
+import it.euris.lisa.insurance.platform.portfolio.sd_decoding.entities.{Entity};
+
+/**
+ * 
+ * @author daniele
+ * @update 3/28/2017
+ * @version 0.1
+ */
+public class {Entity}Mapper implements Mapper<{Entity}, {Entity}Dto> {
+
+	@Override
+	public {Entity} from({Entity}Dto dest) {
+		// {Entity} src = new {Entity}();
+		// {Entity}Dto dto = new {Entity}Dto();
+		//// BeanUtils.copyProperties(dest, src);
+		// MapperUtil.copyDtoPropertiesToEntity(src.getId(),
+		// src.getCod(),src.getDes(),src);
+		// return src;
+		return null;
+	}
+
+	@Override
+	public {Entity}Dto to({Entity} source) {
+		{Entity}Dto dest = new {Entity}Dto();
+		MapperUtil.copyEntityPropertiesToDto(source.getK{Entity}(), source.getCod{Entity}(),
+				source.getDes{Entity}(), dest);
+		return dest;
+	}
+
+	@Override
+	public List<{Entity}Dto> toMany(List<{Entity}> sourceList) {
+		List<{Entity}Dto> destList = new ArrayList<{Entity}Dto>();
+		for ({Entity} src : sourceList) {
+			destList.add(to(src));
+		}
+		return destList;
+	}
+
+}

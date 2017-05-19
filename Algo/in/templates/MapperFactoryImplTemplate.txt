@@ -1,0 +1,5 @@
+@Override
+	public Mapper<{Entity}, {Entity}Dto> create{Entity}Mapper() {
+		// TODO Auto-generated method stub
+		return new {Entity}Mapper();
+	}

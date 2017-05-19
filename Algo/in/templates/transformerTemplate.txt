@@ -1,0 +1,6 @@
+@Transformer
+	public {Entity}Dto transformLinkedHashMapTo{Entity}Dto(LinkedHashMap from) {
+		{Entity}Dto dto = ({Entity}Dto) gson.fromJson((String)String.valueOf(from),
+				{Entity}Dto.class);
+		return dto;
+	}

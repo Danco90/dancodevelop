@@ -1,0 +1,24 @@
+{
+  "responseEntity": [
+    {
+      "id": 1,
+      "cod": "1",
+      "des": "Trasparenza e scambio di informazioni"
+    },
+    {
+      "id": 2,
+      "cod": "2",
+      "des": "Presenza di regimi fiscali agevolati per le imprese"
+    },
+    {
+      "id": 3,
+      "cod": "3",
+      "des": "Assenza di prelievo fiscale sulle imprese"
+    }
+  ],
+  "resourceDoList": null,
+  "pager": {
+    "currentPage": null,
+    "elementsPerPage": null
+  }
+}

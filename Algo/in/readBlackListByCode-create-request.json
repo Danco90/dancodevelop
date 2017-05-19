@@ -1,0 +1,9 @@
+{
+	"requestEntity": {
+	   "cod": 2
+	},
+	"pager": {
+		"currentPage": null,
+		"elementsPerPage": null
+	}
+}

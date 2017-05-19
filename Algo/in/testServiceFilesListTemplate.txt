@@ -1,0 +1,6 @@
+read{Table}-mocked-request.xml
+read{Table}ById-mocked-request.xml
+read{Table}ByCode-mocked-request.xml
+read{Table}-expected-response.xml
+read{Table}ById-expected-response.xml
+read{Table}ByCode-expected-response.xml

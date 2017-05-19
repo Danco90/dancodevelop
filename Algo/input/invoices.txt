@@ -1,0 +1,7 @@
+NrFattura; DataFattura; ModalitaDiPagamento
+1;15/11/2016;DF
+2;23/12/2016;DFFM
+3;05/01/2017;DF60
+4;03/11/2016;DF60
+5;14/09/2016;DFFM
+6;02/01/2017;DF

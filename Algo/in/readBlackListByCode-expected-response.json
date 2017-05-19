@@ -1,0 +1,12 @@
+{
+  "responseEntity": {
+    "id": 2,
+    "cod": "2",
+    "des": "Presenza di regimi fiscali agevolati per le imprese"
+  },
+  "resourceDoList": null,
+  "pager": {
+    "currentPage": null,
+    "elementsPerPage": null
+  }
+}

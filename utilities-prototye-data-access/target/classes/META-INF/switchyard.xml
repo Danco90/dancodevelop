@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><sy:switchyard xmlns:sy="urn:switchyard-config:switchyard:2.0" xmlns="urn:switchyard-config:switchyard:2.0" xmlns:bean="urn:switchyard-component-bean:config:2.0" xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="utilities-prototye-data-access" targetNamespace="urn:com.daniele.switchyard:utilities-prototye-data-access:1.0">
+    <sca:composite name="utilities-prototye-data-access" targetNamespace="urn:com.daniele.switchyard:utilities-prototye-data-access:1.0">
+        <sca:service name="IUtilitiesPrototypeDaoService" promote="UtilitiesPrototypeDaoBean/IUtilitiesPrototypeDaoService">
+            <sca:interface.java interface="com.daniele.switchyard.v1.module.utilities.prototype.dao.service.IUtilitiesPrototypeDaoService"/>
+            <sca:binding.sca name="UtilitiesPrototype-SCA-Producer" sy:clustered="true"/>
+        </sca:service>
+        <sca:component name="UtilitiesPrototypeDaoBean">
+            <bean:implementation.bean class="com.daniele.switchyard.v1.module.utilities.prototype.dao.UtilitiesPrototypeDaoBean"/>
+            <sca:service name="IUtilitiesPrototypeDaoService">
+                <sca:interface.java interface="com.daniele.switchyard.v1.module.utilities.prototype.dao.service.IUtilitiesPrototypeDaoService"/>
+            </sca:service>
+        </sca:component>
+    </sca:composite>
+</sy:switchyard>

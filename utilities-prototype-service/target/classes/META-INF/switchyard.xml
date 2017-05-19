@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><sy:switchyard xmlns:sy="urn:switchyard-config:switchyard:2.0" xmlns="urn:switchyard-config:switchyard:2.0" xmlns:bean="urn:switchyard-component-bean:config:2.0" xmlns:resteasy="urn:switchyard-component-resteasy:config:2.0" xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="utilities-prototype-service" targetNamespace="urn:com.daniele.switchyard:utilities-prototype-service:1.0">
+    <sca:composite name="utilities-prototype-service" targetNamespace="urn:com.daniele.switchyard:utilities-prototype-service:1.0">
+        <sca:service name="IUtilitiesPrototypeRestService" promote="UtilitiesPrototypeRestBean/IUtilitiesPrototypeRestService">
+            <sca:interface.java interface="com.daniele.switchyard.v1.module.utilities.prototype.rest.service.IUtilitiesPrototypeRestService"/>
+            <resteasy:binding.rest name="UtilitiesPrototypeRest-RESTBINDING">
+                <resteasy:messageComposer class="com.daniele.switchyard.v1.module.utilities.prototype.messagecomposer.UptMessageComposer"/>
+                <resteasy:interfaces>com.daniele.switchyard.v1.module.utilities.prototype.rest.controller.IUptController</resteasy:interfaces>
+                <resteasy:contextPath>api/daniele/upt</resteasy:contextPath>
+            </resteasy:binding.rest>
+        </sca:service>
+        <sca:reference multiplicity="0..1" name="IUtilitiesPrototypeDaoService" promote="UtilitiesPrototypeRestBean/IUtilitiesPrototypeDaoService">
+            <sca:interface.java interface="com.daniele.switchyard.v1.module.utilities.prototype.dao.service.IUtilitiesPrototypeDaoService"/>
+            <sca:binding.sca name="UtilitiesPrototype-SCA-Consumer" sy:clustered="true" sy:preferLocal="true" sy:targetNamespace="urn:com.daniele.switchyard:utilities-prototype-data-access:1.0"/>
+        </sca:reference>
+        <sca:component name="UtilitiesPrototypeRestBean">
+            <bean:implementation.bean class="com.daniele.switchyard.v1.module.utilities.prototype.bean.UtilitiesPrototypeRestBean"/>
+            <sca:service name="IUtilitiesPrototypeRestService">
+                <sca:interface.java interface="com.daniele.switchyard.v1.module.utilities.prototype.rest.service.IUtilitiesPrototypeRestService"/>
+            </sca:service>
+            <sca:reference name="IUtilitiesPrototypeDaoService">
+                <sca:interface.java interface="com.daniele.switchyard.v1.module.utilities.prototype.dao.service.IUtilitiesPrototypeDaoService"/>
+            </sca:reference>
+        </sca:component>
+    </sca:composite>
+</sy:switchyard>

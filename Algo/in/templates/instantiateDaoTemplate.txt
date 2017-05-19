@@ -1,0 +1,1 @@
+{entity}Dao = new BaseDaoImpl<{Entity}>(entityManager,{Entity}.class);

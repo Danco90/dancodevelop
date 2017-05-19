@@ -1,0 +1,1 @@
+Mapper<{Entity},{Entity}Dto> create{Entity}Mapper();
