@@ -8,12 +8,23 @@
   <packaging>pom</packaging>
   <name>upt-project</name>
   <properties>
-    <switchyard.version>2.0.0.Final</switchyard.version>
+    <!--  <switchyard.version>2.0.0.Final</switchyard.version>-->
+    <switchyard.version>2.1.0.Final</switchyard.version>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
   <dependencyManagement>
     <dependencies>
+    
+    <!-- https://mvnrepository.com/artifact/org.jboss.bom/eap6-supported-artifacts -->
+	<!-- <dependency>
+	    <groupId>org.jboss.bom</groupId>
+	    <artifactId>eap6-supported-artifacts</artifactId>
+	    <version>6.4.1.GA</version>
+	    <type>pom</type>
+	</dependency>
+	-->
+    
       <dependency>
         <groupId>org.switchyard</groupId>
         <artifactId>switchyard-bom</artifactId>
@@ -27,23 +38,28 @@
     <dependency>
       <groupId>org.switchyard</groupId>
       <artifactId>switchyard-api</artifactId>
+      <version>${switchyard.version}</version>
     </dependency>
     <dependency>
       <groupId>org.switchyard</groupId>
       <artifactId>switchyard-transform</artifactId>
+      <version>${switchyard.version}</version>
     </dependency>
     <dependency>
       <groupId>org.switchyard</groupId>
       <artifactId>switchyard-validate</artifactId>
+      <version>${switchyard.version}</version>
     </dependency>
     <dependency>
       <groupId>org.switchyard</groupId>
       <artifactId>switchyard-test</artifactId>
+      <version>${switchyard.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.switchyard.components</groupId>
       <artifactId>switchyard-component-test-mixin-cdi</artifactId>
+      <version>${switchyard.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -69,9 +85,10 @@
     </plugins>
   </build>
   <modules>
-  	<module>../utilities-prototye-data-access</module>
+    <module>../utilities-prototye-data-access</module>
   	<module>../utilities-prototype-model</module>
   	<module>../utilities-prototype-service</module>
   	<module>../utilities-prototype-interfaces</module>
+  	
   </modules>
 </project>

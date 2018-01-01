@@ -2,13 +2,10 @@ package com.daniele.switchyard.v1.module.utilities.prototype.messagecomposer;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.switchyard.Exchange;
 import org.switchyard.Message;
 import org.switchyard.component.resteasy.composer.RESTEasyBindingData;
-
 import com.daniele.switchyard.v1.module.utilities.prototype.dto.BaseDto;
 import com.daniele.switchyard.v1.module.utilities.prototype.interceptors.ApplicationController;
 import com.daniele.switchyard.v1.module.utilities.prototype.model.artifacts.UptRequestModel;

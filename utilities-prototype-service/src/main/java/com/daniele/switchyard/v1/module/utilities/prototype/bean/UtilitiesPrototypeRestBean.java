@@ -2,12 +2,9 @@ package com.daniele.switchyard.v1.module.utilities.prototype.bean;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.inject.Inject;
-
 import org.switchyard.component.bean.Reference;
 import org.switchyard.component.bean.Service;
-
 import com.daniele.switchyard.v1.module.utilities.prototype.dao.service.IUtilitiesPrototypeDaoService;
 import com.daniele.switchyard.v1.module.utilities.prototype.dto.BaseDto;
 import com.daniele.switchyard.v1.module.utilities.prototype.dto.BaseDto.CallStatus;
@@ -29,7 +26,7 @@ public class UtilitiesPrototypeRestBean implements IUtilitiesPrototypeRestServic
 	
 	protected static final Logger LOGGER = Logger.getLogger(UtilitiesPrototypeRestBean.class.getName());
 	
-	@Inject
+	//@Inject
 	@Reference
 	IUtilitiesPrototypeDaoService dao;
 //	

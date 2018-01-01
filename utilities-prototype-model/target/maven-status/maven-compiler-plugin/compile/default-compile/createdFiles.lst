@@ -1,5 +1,8 @@
-com\daniele\switchyard\v1\module\utilities\prototype\dto\BaseDto$CallStatus.class
-com\daniele\switchyard\v1\module\utilities\prototype\model\artifacts\Code.class
-com\daniele\switchyard\v1\module\utilities\prototype\model\artifacts\UptResponseModel.class
-com\daniele\switchyard\v1\module\utilities\prototype\model\artifacts\UptRequestModel.class
-com\daniele\switchyard\v1\module\utilities\prototype\dto\BaseDto.class
+com/daniele/switchyard/v1/module/utilities/prototype/model/artifacts/UptResponseModel.class
+com/daniele/switchyard/v1/module/utilities/prototype/model/entities/Account.class
+com/daniele/switchyard/v1/module/utilities/prototype/model/artifacts/Code.class
+com/daniele/switchyard/v1/module/utilities/prototype/model/artifacts/UptAccountResponseModel.class
+com/daniele/switchyard/v1/module/utilities/prototype/dto/BaseDto$CallStatus.class
+com/daniele/switchyard/v1/module/utilities/prototype/model/artifacts/UptRequestModel.class
+com/daniele/switchyard/v1/module/utilities/prototype/dto/BaseDto.class
+com/daniele/switchyard/v1/module/utilities/prototype/model/artifacts/UptAccountRequestModel.class

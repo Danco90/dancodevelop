@@ -16,10 +16,13 @@
         <module name="javax.interceptor.api"/>
         <module name="org.hibernate"/>
         -->
-           <module name="com.daniele.switchyard.utilities-prototype-model" />
-           <module name="com.daniele.switchyard.utilities-prototype-interfaces" />
+           <module name="com.daniele.switchyard.upt-project" />
+         
+        <!--  
+        <module name="com.daniele.switchyard.utilities-prototype-model" />
+          <module name="com.daniele.switchyard.utilities-prototype-interfaces" />
         
-        <!--  <module name="com.daniele.switchyard.utiliities-prototype-interfaces" />-->
+        <module name="com.daniele.switchyard.utiliities-prototype-interfaces" />-->
       </dependencies>
    </deployment>
 </jboss-deployment-structure>

@@ -1,0 +1,7 @@
+com/daniele/switchyard/v1/module/utilities/prototype/rest/service/IUtilitiesPrototypeRestService.class
+com/daniele/switchyard/v1/module/utilities/prototype/utils/UrlBuilder.class
+com/daniele/switchyard/v1/module/utilities/prototype/rest/controller/IUptController.class
+com/daniele/switchyard/v1/module/utilities/prototype/messagecomposer/UptMessageComposerParameters.class
+com/daniele/switchyard/v1/module/utilities/prototype/bean/UtilitiesPrototypeRestBean.class
+com/daniele/switchyard/v1/module/utilities/prototype/messagecomposer/UptMessageComposer.class
+com/daniele/switchyard/v1/module/utilities/prototype/interceptors/ApplicationController.class

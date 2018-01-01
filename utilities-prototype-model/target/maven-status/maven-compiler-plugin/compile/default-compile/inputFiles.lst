@@ -1,4 +1,7 @@
-C:\Users\daniele\workspace\utilities-prototype-model\src\main\java\com\daniele\switchyard\v1\module\utilities\prototype\dto\BaseDto.java
-C:\Users\daniele\workspace\utilities-prototype-model\src\main\java\com\daniele\switchyard\v1\module\utilities\prototype\model\artifacts\Code.java
-C:\Users\daniele\workspace\utilities-prototype-model\src\main\java\com\daniele\switchyard\v1\module\utilities\prototype\model\artifacts\UptResponseModel.java
-C:\Users\daniele\workspace\utilities-prototype-model\src\main\java\com\daniele\switchyard\v1\module\utilities\prototype\model\artifacts\UptRequestModel.java
+/Users/matteodaniele/git/dancodevelop/utilities-prototype-model/src/main/java/com/daniele/switchyard/v1/module/utilities/prototype/model/artifacts/Code.java
+/Users/matteodaniele/git/dancodevelop/utilities-prototype-model/src/main/java/com/daniele/switchyard/v1/module/utilities/prototype/model/artifacts/UptAccountResponseModel.java
+/Users/matteodaniele/git/dancodevelop/utilities-prototype-model/src/main/java/com/daniele/switchyard/v1/module/utilities/prototype/model/artifacts/UptRequestModel.java
+/Users/matteodaniele/git/dancodevelop/utilities-prototype-model/src/main/java/com/daniele/switchyard/v1/module/utilities/prototype/model/artifacts/UptAccountRequestModel.java
+/Users/matteodaniele/git/dancodevelop/utilities-prototype-model/src/main/java/com/daniele/switchyard/v1/module/utilities/prototype/model/entities/Account.java
+/Users/matteodaniele/git/dancodevelop/utilities-prototype-model/src/main/java/com/daniele/switchyard/v1/module/utilities/prototype/model/artifacts/UptResponseModel.java
+/Users/matteodaniele/git/dancodevelop/utilities-prototype-model/src/main/java/com/daniele/switchyard/v1/module/utilities/prototype/dto/BaseDto.java
