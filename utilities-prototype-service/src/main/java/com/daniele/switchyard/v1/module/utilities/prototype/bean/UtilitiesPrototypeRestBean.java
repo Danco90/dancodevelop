@@ -16,9 +16,9 @@ import com.daniele.switchyard.v1.module.utilities.prototype.rest.service.IUtilit
  * @company daniele
  * @author daniele
  * @mail danielematteo90@gmail.com
- * @date 7/18/2017
- * @time 14:00
- * @version 0.2
+ * @date 01/03/2018
+ * @time 22:00
+ * @version 0.3
  * 
  */
 @Service(name = "IUtilitiesPrototypeRestService", value = IUtilitiesPrototypeRestService.class)
@@ -29,8 +29,30 @@ public class UtilitiesPrototypeRestBean implements IUtilitiesPrototypeRestServic
 	//@Inject
 	@Reference
 	IUtilitiesPrototypeDaoService dao;
-//	
+	
 	@Override
+	public BaseDto<UptResponseModel> acctList() {
+		LOGGER.log(Level.INFO, "UtilitiesPrototypeRestBean - acctList - start ");
+		long start = System.currentTimeMillis();
+		BaseDto<UptResponseModel> toReturn = new BaseDto<UptResponseModel>();
+		toReturn.setCallStatus(CallStatus.OK);
+		
+		try{
+			toReturn = dao.listAccount();
+			if(toReturn !=null && toReturn.getMessage() !=null && toReturn.getMessageStatus() !=null)
+				LOGGER.log(Level.INFO,"UtilitiesPrototypeRestBean - acctList -dao service method invoked");
+			
+		}catch(Exception e){
+			LOGGER.log(Level.SEVERE,"exception caught ",e);
+			toReturn.setCallStatus(CallStatus.KO);
+		}finally{
+			LOGGER.log(Level.INFO, "UtilitiesPrototypeRestBean - acctList - ends in "+(System.currentTimeMillis()-start)+" ms.");
+		}
+		
+		return toReturn;
+	}
+	
+	/*@Override	
 	public BaseDto<UptResponseModel> genKey(BaseDto<UptRequestModel> request) {
 		LOGGER.log(Level.INFO, "UtilitiesPrototypeRestBean - genKey - start ");
 		long start = System.currentTimeMillis();
@@ -56,12 +78,7 @@ public class UtilitiesPrototypeRestBean implements IUtilitiesPrototypeRestServic
 		
 		return toReturn;
 		
-	}
-
-	
-
-	
-
+	}*/
 	
 
 }

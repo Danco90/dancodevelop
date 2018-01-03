@@ -12,20 +12,21 @@ import com.daniele.switchyard.v1.module.utilities.prototype.model.artifacts.UptR
  * @company daniele
  * @author daniele
  * @mail danielematteo90@gmail.com
- * @date 1/01/2018
- * @time 19:17
- * @version 0.4
+ * @date 1/03/2018
+ * @time 22:08
+ * @version 0.6
  * 
  */
 public interface IUtilitiesPrototypeDaoService {
 	
-	BaseDto<UptResponseModel> genKey(BaseDto<UptRequestModel> request);
+//	BaseDto<UptResponseModel> genKey(BaseDto<UptRequestModel> request);
+	BaseDto<UptResponseModel> listAccount();
 
 	//Account updateAccount(Account to) throws AccountMovementException;
 	
     //List<Account> updateAccounts(Account from, Account to) throws AccountMovementException;
 	
-	List<UptAccountRequestModel> listAccount() throws Exception;
+//	List<UptAccountRequestModel> listAccount() throws Exception;
 //	List<UptAccountResponsetModel> listAccount() throws Exception;
 	 
 	//Account getAccount(long id) throws AccountNotFoundException;

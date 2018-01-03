@@ -6,9 +6,9 @@ import java.io.Serializable;
  * @company daniele
  * @author daniele
  * @mail danielematteo90@gmail.com
- * @date 7/17/2017
- * @time 04:03
- * @version 0.1
+ * @date 1/03/2018
+ * @time 22:20
+ * @version 0.2
  * 
  */
 public class UptRequestModel implements Serializable{
@@ -17,33 +17,33 @@ public class UptRequestModel implements Serializable{
 	
 	private String channel;
 	
-	private String entitiesFilePath;
-	private String outDirPath;
-	private String templatesInDirPath;
+//	private String entitiesFilePath;
+//	private String outDirPath;
+//	private String templatesInDirPath;
 	
-	public String getEntitiesFilePath() {
-		return entitiesFilePath;
-	}
-
-	public void setEntitiesFilePath(String entitiesFilePath) {
-		this.entitiesFilePath = entitiesFilePath;
-	}
-
-	public String getOutDirPath() {
-		return outDirPath;
-	}
-
-	public void setOutDirPath(String outDirPath) {
-		this.outDirPath = outDirPath;
-	}
-
-	public String getTemplatesInDirPath() {
-		return templatesInDirPath;
-	}
-
-	public void setTemplatesInDirPath(String templatesInDirPath) {
-		this.templatesInDirPath = templatesInDirPath;
-	}
+//	public String getEntitiesFilePath() {
+//		return entitiesFilePath;
+//	}
+//
+//	public void setEntitiesFilePath(String entitiesFilePath) {
+//		this.entitiesFilePath = entitiesFilePath;
+//	}
+//
+//	public String getOutDirPath() {
+//		return outDirPath;
+//	}
+//
+//	public void setOutDirPath(String outDirPath) {
+//		this.outDirPath = outDirPath;
+//	}
+//
+//	public String getTemplatesInDirPath() {
+//		return templatesInDirPath;
+//	}
+//
+//	public void setTemplatesInDirPath(String templatesInDirPath) {
+//		this.templatesInDirPath = templatesInDirPath;
+//	}
 
 	public String getChannel() {
 		return channel;

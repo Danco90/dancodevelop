@@ -8,14 +8,16 @@ import com.daniele.switchyard.v1.module.utilities.prototype.model.entities.Accou
  * @company daniele
  * @author daniele
  * @mail danielematteo90@gmail.com
- * @date 12/14/2017
- * @time 23:43
- * @version 0.2
+ * @date 1/03/2017
+ * @time 22:03
+ * @version 0.3
  * 
  */
 public class UptAccountRequestModel implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	
+	private String channel;
 	
 	private Account fromAcct;
 	private Account toAcct;
@@ -41,6 +43,14 @@ public class UptAccountRequestModel implements Serializable{
 	}
 	public void setToAcct(Account toAcct) {
 		this.toAcct = toAcct;
+	}
+	
+	public String getChannel() {
+		return channel;
+	}
+
+	public void setChannel(String channel) {
+		this.channel = channel;
 	}
 	
 

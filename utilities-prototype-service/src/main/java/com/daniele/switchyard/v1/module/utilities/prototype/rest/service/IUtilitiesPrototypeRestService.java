@@ -8,12 +8,14 @@ import com.daniele.switchyard.v1.module.utilities.prototype.model.artifacts.UptR
  * @company daniele
  * @author daniele
  * @mail danielematteo90@gmail.com
- * @date 5/18/2017
- * @time 05:24
- * @version 0.3
+ * @date 1/03/2018
+ * @time 22:16
+ * @version 0.5.3
  * 
  */
 public interface IUtilitiesPrototypeRestService {
 	
-	public BaseDto<UptResponseModel> genKey(BaseDto<UptRequestModel> request);
+	//public BaseDto<UptResponseModel> genKey(BaseDto<UptRequestModel> request);
+	public BaseDto<UptResponseModel> acctList();
+
 }

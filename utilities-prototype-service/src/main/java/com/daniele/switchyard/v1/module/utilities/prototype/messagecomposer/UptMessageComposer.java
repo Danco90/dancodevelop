@@ -29,14 +29,14 @@ public class UptMessageComposer extends UptMessageComposerParameters {
 	public Message compose(RESTEasyBindingData src, Exchange exchange) throws Exception {
 		LOGGER.log(Level.INFO,"UptMessageComposer - Entering message composer...");
 		final Message message = super.compose(src, exchange);
-		if(src.getOperationName().equalsIgnoreCase(UptMessageComposerParameters.UPT_GEN_KEY)){
-			String channel = src.getHeaders().getFirst(IUptController.CHANNEL);
-			UptRequestModel model = (UptRequestModel) src.getParameters()[2];
-			model.setChannel(channel);
+		if(src.getOperationName().equalsIgnoreCase(UptMessageComposerParameters.UPT_ACCOUNTS)){
+			//String channel = src.getHeaders().getFirst(IUptController.CHANNEL);
+			//UptRequestModel model = (UptRequestModel) src.getParameters()[2];
+			//model.setChannel(channel);
 			HttpServletRequest httpServletRequest = (HttpServletRequest) src.getParameters()[1];
 			LOGGER.log(Level.INFO, "UptMessageComposer - compose - Context Path:"+UrlBuilder.getURL(httpServletRequest));
 			BaseDto<UptRequestModel> payload = new BaseDto<UptRequestModel>();
-			payload.setMessage(model);
+			payload.setMessage(/*model*/null);
 			message.setContent(payload);
 		}
 		return message;
