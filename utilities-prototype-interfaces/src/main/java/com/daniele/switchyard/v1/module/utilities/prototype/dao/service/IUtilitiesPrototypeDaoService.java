@@ -1,10 +1,6 @@
 package com.daniele.switchyard.v1.module.utilities.prototype.dao.service;
 
-import java.util.List;
-
 import com.daniele.switchyard.v1.module.utilities.prototype.dto.BaseDto;
-import com.daniele.switchyard.v1.module.utilities.prototype.model.artifacts.UptAccountRequestModel;
-import com.daniele.switchyard.v1.module.utilities.prototype.model.artifacts.UptRequestModel;
 import com.daniele.switchyard.v1.module.utilities.prototype.model.artifacts.UptResponseModel;
 
 
@@ -12,9 +8,9 @@ import com.daniele.switchyard.v1.module.utilities.prototype.model.artifacts.UptR
  * @company daniele
  * @author daniele
  * @mail danielematteo90@gmail.com
- * @date 1/03/2018
- * @time 22:08
- * @version 0.6
+ * @date 1/04/2018
+ * @time 17:55
+ * @version 0.6.1
  * 
  */
 public interface IUtilitiesPrototypeDaoService {

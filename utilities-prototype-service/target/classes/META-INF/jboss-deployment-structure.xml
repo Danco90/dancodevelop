@@ -1,7 +1,9 @@
 <jboss-deployment-structure>
    <deployment>
       <dependencies>
-        <!--  <module name="org.javassist" />
+       <!--  
+       <module name="org.switchyard.component.resteasy.composer.RESTEasyMessageComposer" />
+       <module name="org.javassist" />
         <module name="org.apache.commons.beanutils"/>
         <module name="org.apache.commons.lang"/>-->
         <!-- 
@@ -16,8 +18,12 @@
         <module name="javax.interceptor.api"/>
         <module name="org.hibernate"/>
         -->
-           <module name="com.daniele.switchyard.upt-project" />
-         
+        <module name="com.daniele.switchyard.upt-project" />
+        <!--  <module name="org.switchyard.components.switchyard-component-common.200Final" />
+        <module name="org.switchyard.components.switchyard-component-resteasy.200Final" />
+   	    -->
+   	    
+   	    
         <!--  
         <module name="com.daniele.switchyard.utilities-prototype-model" />
           <module name="com.daniele.switchyard.utilities-prototype-interfaces" />

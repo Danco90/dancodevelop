@@ -89,6 +89,7 @@
   	<module>../utilities-prototype-model</module>
   	<module>../utilities-prototype-service</module>
   	<module>../utilities-prototype-interfaces</module>
+  	<module>../utp-jboss-modules</module>
   	
   </modules>
 </project>

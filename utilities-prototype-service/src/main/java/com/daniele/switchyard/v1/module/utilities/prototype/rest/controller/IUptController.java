@@ -18,15 +18,21 @@ import com.daniele.switchyard.v1.module.utilities.prototype.model.artifacts.UptR
  * @company daniele
  * @author daniele
  * @mail danielematteo90@gmail.com
- * @date 1/03/2017
- * @time 22:32
- * @version 0.3.1
+ * @date 1/04/2017
+ * @time 12:32
+ * @version 0.3.2
  * 
  */
 @Path("v1")
 public interface IUptController {
 	
 	public static final String CHANNEL = "channel";
+	
+	@GET
+	@Path("accounts")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response acctList(@HeaderParam(CHANNEL) String channel,
+			   				 @Context HttpServletRequest httpRequest);
 	
 //	@PUT
 //	@Path("genKey")
@@ -36,12 +42,12 @@ public interface IUptController {
 //					   @Context HttpServletRequest httpRequest,
 //					   UptRequestModel request);
 	
-	@GET
-	@Path("accounts")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response acctList(@HeaderParam(CHANNEL) String channel,
-			   				 @Context HttpServletRequest httpRequest,
-			   				 UptRequestModel request);
+//	@GET
+//	@Path("accounts")
+//	@Produces(MediaType.APPLICATION_JSON)
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public Response acctList(@HeaderParam(CHANNEL) String channel,
+//			   				 @Context HttpServletRequest httpRequest,
+//			   				 UptRequestModel request);
 	
 }

@@ -5,8 +5,9 @@
       http://java.sun.com/xml/ns/javaee/beans_1_0.xsd">
       
       
-    <bean id="utilitiesPrototypeDao" class="com.daniele.switchyard.v1.module.utilities.prototype.dao" >
+    <!-- <bean id="utilitiesPrototypeDao" class="com.daniele.switchyard.v1.module.utilities.prototype.dao" >
      <property name="sessionFactory" ref="mySessionFactory" />
 	</bean>
+	-->
       
 </beans>
