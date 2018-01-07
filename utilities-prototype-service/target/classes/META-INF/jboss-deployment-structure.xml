@@ -18,7 +18,10 @@
         <module name="javax.interceptor.api"/>
         <module name="org.hibernate"/>
         -->
+        <module name="org.hibernate"/>
+        
         <module name="com.daniele.switchyard.upt-project" />
+        <!--  <module name="org.switchyard.components.switchyard-component-resteasy" />-->
         <!--  <module name="org.switchyard.components.switchyard-component-common.200Final" />
         <module name="org.switchyard.components.switchyard-component-resteasy.200Final" />
    	    -->

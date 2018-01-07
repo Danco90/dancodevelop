@@ -102,6 +102,13 @@
           <scannerClassNames>
             <param>org.switchyard.transform.config.model.TransformSwitchYardScanner</param>
           </scannerClassNames>
+          <archive>
+                    <manifestEntries>
+                    <Dependencies>system.layers.base.org.switchyard.components.switchyard-component-resteasy</Dependencies>
+                        <!--  <Dependencies>com.fasterxml.jackson.datatype.jackson-datatype-jsr310,org.hibernate,org.apache.commons.lang3.commons-lang3</Dependencies>
+                        -->
+                    </manifestEntries>
+          </archive>
         </configuration>
       </plugin>
     </plugins>
